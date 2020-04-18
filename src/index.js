@@ -1,1 +1,1 @@
-console.log('Hello World')
+exports = module.exports = require('./app')
