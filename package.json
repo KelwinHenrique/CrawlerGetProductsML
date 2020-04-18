@@ -10,9 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "http-status": "^1.4.2",
     "nodemon": "^2.0.3"
   },
   "devDependencies": {
+    "querymen": "^2.1.4",
     "sucrase": "^3.13.0"
   }
 }
