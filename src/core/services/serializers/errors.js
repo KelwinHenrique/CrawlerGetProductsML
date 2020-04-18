@@ -8,7 +8,7 @@ const getDefaultErrorObject = (message) => ({
 })
 
 const serializeError = (error, defaultMessage) => (
-  error && error.message ? getDefaultErrorObject(error.message) : getDefaultErrorObject(defaultMessage)
+  error && error.customError ? getDefaultErrorObject(error.customError) : getDefaultErrorObject(defaultMessage)
 )
 
 export { serializeError }

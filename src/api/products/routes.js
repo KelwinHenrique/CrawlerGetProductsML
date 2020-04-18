@@ -12,7 +12,8 @@ productsRouter.get('/',
     },
     limit: {
       type: Number,
-      required: true
+      required: true,
+      max: 100000
     },
   }),
   productsController.processGetProductsByName
