@@ -1,8 +1,8 @@
 import { getProductsByName } from './use-cases'
 import { success } from '../../core/services/response'
 
-const processGetProductsByName = ({ querymen: { cursor, query } }, res, next) => (
-  getProductsByName(cursor, query)
+const processGetProductsByName = ({ bodymen: { body } }, res, next) => (
+  getProductsByName(body)
     .then(success(res))
     .catch(error => next(error))
 )

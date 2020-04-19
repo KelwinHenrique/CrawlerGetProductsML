@@ -16,11 +16,8 @@ const objectExpectedInReturn = () => (
   }
 )
 
-const cursor = {
-  limit: 1
-}
-
-const query = {
+const body = {
+  limit: 1,
   search: 'Cadeado'
 }
 
@@ -44,13 +41,13 @@ describe("Unit Test getProductsByName", () => {
     ))
   })
 
-  test('unit test get-products-by name should return expected object contract', async () => {
-    const responseGetProducts = await getProductsByName(cursor, query)
+  test('get-products-by name should return expected object contract', async () => {
+    const responseGetProducts = await getProductsByName(body)
 
     expect(responseGetProducts).toEqual(objectExpectedInReturn())
   })
 
-  test('unit test get-products-by name should return error when anything wrong happens with crawlerGetProducts', async () => {
+  test('get-products-by name should return error when anything wrong happens with crawlerGetProducts', async () => {
 
     const expectAssertValue = 1
     crawler.crawlerGetProducts = jest.fn(() => {
@@ -59,8 +56,19 @@ describe("Unit Test getProductsByName", () => {
 
     expect.assertions(expectAssertValue)
 
-    return getProductsByName(cursor, query).catch(err =>
+    return getProductsByName(body).catch(err =>
       expect(err.error.message).toEqual('It was not possible to search for products.')
+    )
+  })
+
+  test('get-products-by name should return error when don\'t send body', async () => {
+
+    const expectAssertValue = 1
+
+    expect.assertions(expectAssertValue)
+
+    return getProductsByName().catch(err =>
+      expect(err.error.message).toEqual('Error while get products.')
     )
   })
 

@@ -1,6 +1,6 @@
 import { Router } from 'express'
+import { middleware as body } from 'bodymen'
 import { productsController } from './controller'
-import { middleware as query } from 'querymen'
 
 const productsRouter = new Router({ mergeParams: true })
 
@@ -44,8 +44,8 @@ const productsRouter = new Router({ mergeParams: true })
  *       "message": "Error while get products."
  *     }
  */
-productsRouter.get('/',
-  query({
+productsRouter.post('/',
+  body({
     search: {
       type: String,
       required: true

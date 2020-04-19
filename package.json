@@ -20,14 +20,14 @@
   "dependencies": {
     "apidoc": "^0.20.1",
     "apidoc-markdown": "^5.0.1",
-    "app-root-path": "^3.0.0",
     "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "bodymen": "^1.1.1",
     "cheerio": "^1.0.0-rc.3",
     "cls-hooked": "^4.2.2",
     "cls-rtracer": "^1.4.1",
     "express": "^4.17.1",
     "http-status": "^1.4.2",
-    "morgan": "^1.10.0",
     "nodemon": "^2.0.3",
     "stack-trace": "0.0.10",
     "winston": "^3.2.1"
@@ -35,7 +35,6 @@
   "devDependencies": {
     "@sucrase/jest-plugin": "^2.0.0",
     "jest": "^25.3.0",
-    "querymen": "^2.1.4",
     "sucrase": "^3.13.0"
   }
 }
