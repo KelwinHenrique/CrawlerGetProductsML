@@ -9,11 +9,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "app-root-path": "^3.0.0",
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
+    "cls-hooked": "^4.2.2",
+    "cls-rtracer": "^1.4.1",
     "express": "^4.17.1",
     "http-status": "^1.4.2",
-    "nodemon": "^2.0.3"
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.3",
+    "stack-trace": "0.0.10",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "querymen": "^2.1.4",

@@ -1,11 +1,14 @@
 import axios from 'axios'
 const cheerio = require('cheerio');
+import { ConsoleLogger } from '../../../../core/services/log'
 
 const getPageResponse = async (search, lastElement) => {
   try {
+    ConsoleLogger().info('MAKE_REQUEST_TO_URL', { search, lastElement })
     const url = `https://lista.mercadolivre.com.br/${search}_Desde_${lastElement}`
     return await axios(url)
   } catch (error) {
+    ConsoleLogger().error('ERROR_REQUEST_TO_PAGE', { error: error.message , search, lastElement })
     if(error && error.request && error.request.res && error.request.res.statusCode === 404) {
       return Promise.reject({ customError: 'There are no ads that match your search.' })
     }
@@ -22,6 +25,7 @@ const getSerializedProduct = ($, product) => ({
 })
 
 const scrollList = ($, productsTaken, limit) => {
+  ConsoleLogger().info('SROLL_LIST_PRODUCTS', { size: productsTaken.length, limit })
   $('.results-item').each((i, product) => {
     const productToken = getSerializedProduct($, product)
     if (productsTaken.length < limit) {
@@ -56,12 +60,15 @@ const getProducts = async (search, limit) => {
 
 const crawlerGetProducts = async (search, limit) => {
   try {
+    ConsoleLogger().info('START_CRAWLER_GET_PRODUCTS_BY_NAME', { search, limit })
     const products = await getProducts(search, limit)
+    ConsoleLogger().info('SUCCESS_CRAWLER_PRODUCTS', { products, search, limit })
     return {
       products,
       size: products.length
     }
   } catch (error) {
+    ConsoleLogger().error('ERROR_CRAWLER_GET_PRODUCTS', { error, search, limit })
     return Promise.reject({ customError: error.customError || 'Error when running the crawler.' })
   }
 }
