@@ -11,7 +11,8 @@
   },
   "scripts": {
     "start:dev": "nodemon src/index.js",
-    "docs": "apidoc -i src -o docs && apidoc-markdown -p docs -o DOCS.md"
+    "docs": "apidoc -i src -o docs && apidoc-markdown -p docs -o DOCS.md",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,8 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@sucrase/jest-plugin": "^2.0.0",
+    "jest": "^25.3.0",
     "querymen": "^2.1.4",
     "sucrase": "^3.13.0"
   }
