@@ -2,13 +2,23 @@
   "name": "mundiale",
   "version": "1.0.0",
   "description": "",
+  "apidoc": {
+    "name": "Crawler ML",
+    "version": "0.1.0",
+    "description": "Api Doc for Crawler that get products of ML",
+    "title": "Crawler ML",
+    "url": "http://localhost:3000/api"
+  },
   "scripts": {
-    "start:dev": "nodemon src/index.js"
+    "start:dev": "nodemon src/index.js",
+    "docs": "apidoc -i src -o docs && apidoc-markdown -p docs -o DOCS.md"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apidoc": "^0.20.1",
+    "apidoc-markdown": "^5.0.1",
     "app-root-path": "^3.0.0",
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",

@@ -19,7 +19,7 @@ const getProductsByName = async (cursor, query) => {
     return objectResponse
   } catch (error) {
     ConsoleLogger().error('ERROR_GET_PRODUCTS_BY_NAME', { error, cursor, query})
-    return Promise.reject(serializeError(error, 'Error when get products.' ))
+    return Promise.reject(serializeError(error, 'Error while get products.' ))
   }
 
 }
