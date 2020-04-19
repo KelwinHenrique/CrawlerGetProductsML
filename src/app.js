@@ -8,3 +8,5 @@ const server = http.createServer(app)
 
 
 server.listen(config.port, config.ip, () => console.log('Express server listening on http://%s:%d', config.ip, config.port))
+
+export { server }

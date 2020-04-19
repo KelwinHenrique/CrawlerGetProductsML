@@ -26,6 +26,7 @@
     "cheerio": "^1.0.0-rc.3",
     "cls-hooked": "^4.2.2",
     "cls-rtracer": "^1.4.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "http-status": "^1.4.2",
     "nodemon": "^2.0.3",
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@sucrase/jest-plugin": "^2.0.0",
     "jest": "^25.3.0",
-    "sucrase": "^3.13.0"
+    "sucrase": "^3.13.0",
+    "supertest": "^4.0.2"
   }
 }
