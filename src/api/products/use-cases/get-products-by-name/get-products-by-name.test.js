@@ -1,5 +1,5 @@
 import { getProductsByName } from './get-products-by-name'
-import * as crawler from '../services'
+import * as crawler from '../../services'
 
 const objectExpectedInReturn = () => (
   {

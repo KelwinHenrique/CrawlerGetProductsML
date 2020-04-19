@@ -1,5 +1,5 @@
 import { serializeError } from '../../../../core/services/serializers'
-import { crawlerGetProducts } from '../services'
+import { crawlerGetProducts } from '../../services'
 import { ConsoleLogger } from '../../../../core/services/log'
 
 const getProducts = async (limit, search) => {

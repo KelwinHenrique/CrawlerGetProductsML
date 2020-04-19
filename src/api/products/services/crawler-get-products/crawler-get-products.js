@@ -1,6 +1,6 @@
 import axios from 'axios'
 const cheerio = require('cheerio');
-import { ConsoleLogger } from '../../../../../core/services/log'
+import { ConsoleLogger } from '../../../../core/services/log'
 
 const getPageResponse = async (search, lastElement) => {
   try {
