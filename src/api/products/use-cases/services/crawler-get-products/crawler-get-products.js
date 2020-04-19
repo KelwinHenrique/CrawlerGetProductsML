@@ -4,12 +4,11 @@ import { ConsoleLogger } from '../../../../../core/services/log'
 
 const getPageResponse = async (search, lastElement) => {
   try {
-    ConsoleLogger().info('MAKE_REQUEST_TO_URL', { search, lastElement })
     const url = `https://lista.mercadolivre.com.br/${search}_Desde_${lastElement}`
     return await axios(url)
   } catch (error) {
-    ConsoleLogger().error('ERROR_REQUEST_TO_PAGE', { error: error.message , search, lastElement })
-    if(error && error.request && error.request.res && error.request.res.statusCode === 404) {
+    ConsoleLogger().error('ERROR_REQUEST_TO_PAGE', { error: error.message, search, lastElement })
+    if (error && error.request && error.request.res && error.request.res.statusCode === 404) {
       return Promise.reject({ customError: 'There are no ads that match your search.' })
     }
     return Promise.reject({ customError: 'Error while make request to page.' })
@@ -41,26 +40,33 @@ const makeCrawler = async (search, productsTaken, limit) => {
     const responseHtml = await getPageResponse(search, productsTaken.length)
     const $ = cheerio.load(responseHtml.data)
     scrollList($, productsTaken, limit)
+    return {
+      finish: false
+    }
   } catch (error) {
+    if (error.customError === 'There are no ads that match your search.') {
+      return {
+        finish: true
+      }
+    }
     return Promise.reject({ customError: error.customError || 'Error when run crawler.' })
   }
 }
 
 const getProducts = async (search, limit) => {
-  try {
-    const productsTaken = []
-    while(productsTaken.length < limit) {
-      await makeCrawler(search, productsTaken, limit)
+  const productsTaken = []
+  while (productsTaken.length < limit) {
+    const { finish } = await makeCrawler(search, productsTaken, limit)
+    if (finish) {
+      break
     }
-    return productsTaken
-  } catch (error) {
-    return Promise.reject({ customError: error.customError || 'Error when get products by page.' })
+
   }
+  return productsTaken
 }
 
 const crawlerGetProducts = async (search, limit) => {
   try {
-    ConsoleLogger().info('START_CRAWLER_GET_PRODUCTS_BY_NAME', { search, limit })
     const products = await getProducts(search, limit)
     ConsoleLogger().info('SUCCESS_CRAWLER_PRODUCTS', { products, search, limit })
     return {

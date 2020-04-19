@@ -41,13 +41,13 @@ describe("Unit Test getProductsByName", () => {
     ))
   })
 
-  test('get-products-by name should return expected object contract', async () => {
+  test('get-products-by should return expected object contract', async () => {
     const responseGetProducts = await getProductsByName(body)
 
     expect(responseGetProducts).toEqual(objectExpectedInReturn())
   })
 
-  test('get-products-by name should return error when anything wrong happens with crawlerGetProducts', async () => {
+  test('get-products-by should return error when anything wrong happens with crawlerGetProducts', async () => {
 
     const expectAssertValue = 1
     crawler.crawlerGetProducts = jest.fn(() => {
@@ -61,7 +61,7 @@ describe("Unit Test getProductsByName", () => {
     )
   })
 
-  test('get-products-by name should return error when don\'t send body', async () => {
+  test('get-products-by should return error when don\'t send body', async () => {
 
     const expectAssertValue = 1
 
